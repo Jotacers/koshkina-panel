@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KoshKina Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1>KoshKina Panel</h1>
+    <form id="login-form">
+      <label for="usuario">Usuário:</label>
+      <input type="text" id="usuario" name="usuario" required autocomplete="username">
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required autocomplete="current-password">
+      <button type="submit">Acessar</button>
+    </form>
+    <div id="resultado"></div>
+  </div>
+  <audio id="bg-audio" src="audio.mp3" autoplay loop></audio>
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      const audio = document.getElementById('bg-audio');
+      audio.volume = 0.5;
+      audio.play().catch(() => {
+        document.body.addEventListener('click', () => audio.play(), { once: true });
+      });
+    });
+  </script>
+</body>
+</html> 
