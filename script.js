@@ -202,7 +202,28 @@ form.addEventListener('submit', function(e) {
     ];
     ids.forEach(obj => {
       const btn = document.getElementById('toggle-' + obj.id);
-      if (btn) btn.onclick = function() { toggleBtn(this, obj.msg); };
+      if (btn) {
+        if (obj.id === 'ip') {
+          btn.onclick = function() {
+            toggleBtn(this, obj.msg);
+            if (this.classList.contains('on')) {
+              const ip = document.getElementById('ip').value.trim();
+              if (ip) {
+                // Abre o site localizeip.com.br com o IP pesquisado
+                window.open(`https://localizeip.com.br/?ip=${encodeURIComponent(ip)}`, '_blank');
+              } else {
+                alert('Por favor, insira um IP válido.');
+                this.classList.remove('on');
+                this.textContent = 'OFF';
+                var msg = document.getElementById(obj.msg);
+                if (msg) msg.style.display = 'none';
+              }
+            }
+          };
+        } else {
+          btn.onclick = function() { toggleBtn(this, obj.msg); };
+        }
+      }
     });
     // Adiciona o evento do botão Painel Adm
     document.getElementById('btn-admin-panel').onclick = abrirPainelAdm;
@@ -313,7 +334,28 @@ form.addEventListener('submit', function(e) {
     ];
     ids.forEach(obj => {
       const btn = document.getElementById('toggle-' + obj.id);
-      if (btn) btn.onclick = function() { toggleBtn(this, obj.msg); };
+      if (btn) {
+        if (obj.id === 'ip') {
+          btn.onclick = function() {
+            toggleBtn(this, obj.msg);
+            if (this.classList.contains('on')) {
+              const ip = document.getElementById('ip').value.trim();
+              if (ip) {
+                // Abre o site localizeip.com.br com o IP pesquisado
+                window.open(`https://localizeip.com.br/?ip=${encodeURIComponent(ip)}`, '_blank');
+              } else {
+                alert('Por favor, insira um IP válido.');
+                this.classList.remove('on');
+                this.textContent = 'OFF';
+                var msg = document.getElementById(obj.msg);
+                if (msg) msg.style.display = 'none';
+              }
+            }
+          };
+        } else {
+          btn.onclick = function() { toggleBtn(this, obj.msg); };
+        }
+      }
     });
   } else {
     resultado.textContent = check.msg;
